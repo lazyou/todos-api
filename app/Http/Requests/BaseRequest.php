@@ -36,9 +36,7 @@ class BaseRequest
     // 为了方便表单验证后能继续调用 Request 类里的方法，估计会不支持某些方法
     public function __call($name, $args)
     {
-        $args = isset($args[0]) ? $args[0] :$args;
-
-        return call_user_func([$this->request, $name], $args);
+        return call_user_func([$this->request, $name], ...$args);
     }
 
     /**
